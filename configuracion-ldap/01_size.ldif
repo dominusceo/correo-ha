@@ -1,0 +1,7 @@
+dn: cn=config
+changetype: modify
+replace: nsslapd-sizelimit
+nsslapd-sizelimit: -1
+-
+add: nsLookThroughLimit
+nsLookThroughLimit: -1

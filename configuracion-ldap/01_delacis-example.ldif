@@ -1,0 +1,17 @@
+dn: dc=example,dc=com
+changetype: modify
+delete: aci
+aci: (targetattr = "userPassword") (target = "ldap:///ou=People,dc=example,dc=
+ com") (version 3.0;acl "Self-write password for People (userPassword)";allow 
+ (selfwrite)(userdn = "ldap:///anyone");)
+aci: (targetattr!="userPassword || aci")(version 3.0; acl "Enable anonymous ac
+ cess"; allow (read, search, compare) userdn="ldap:///anyone";)
+aci: (targetattr="carLicense || description || displayName || facsimileTelepho
+ neNumber || homePhone || homePostalAddress || initials || jpegPhoto || labele
+ dURI || mail || mobile || pager || photo || postOfficeBox || postalAddress ||
+  postalCode || preferredDeliveryMethod || preferredLanguage || registeredAddr
+ ess || roomNumber || secretary || seeAlso || st || street || telephoneNumber 
+ || telexNumber || title || userCertificate || userPassword || userSMIMECertif
+ icate || x500UniqueIdentifier || CURP || claveElector || givenName || gecos |
+ | RFC || description")(version 3.0; acl "Enable self write for common attribu
+ tes"; allow (write) userdn="ldap:///self";)

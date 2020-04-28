@@ -1,0 +1,14 @@
+hosts = ds-mb.ca.example.com
+base = dc=example,dc=com
+dn = cn=Directory Manager
+dnpass = 123123123
+ldap_version = 3
+sasl_realm = CA.EXAMPLE.COM
+debug_level =0
+deref = never
+scope = subtree
+auth_bind = yes
+user_attrs = uid=user,homeDirectory=home,mailLocation=mail,mail=~/Maildir:INDEX=/var/indexes/%n,uidNumber=uid,gidNumber=gid
+pass_filter = (&(objectClass=posixAccount)(uid=%n)(mailhost=correo-mb.ca.example.com))
+pass_attrs = userPassword=password
+default_pass_scheme = PLAIN-MD5
